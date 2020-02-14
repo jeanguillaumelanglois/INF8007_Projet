@@ -53,6 +53,14 @@ text_parser.feed(data)
 parser.links = []
 parser.feed(data)
 pattern = re.compile("((http|ftp)s?://.*?)")
+#TODO Rajouter les liens relatifs dans les hrefs
+#TODO filtrer les faux positifs et les faux negatifs (?)
+#TODO Balises scripts json (?)
+#TODO comment utiliser les liens relatifs(?)
+#TODO pour le web cralling il faut utiliser les listes des urls issues du web scrapping(?)
+#TODO verifier si elles font partie du meme site (?)
+#TODO recommencer recursivement pour les adresses du meme site(?)
+
 for l in links :
     for value in list(l.values()):
         if pattern.match(value):
