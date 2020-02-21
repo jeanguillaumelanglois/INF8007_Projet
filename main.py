@@ -1,10 +1,9 @@
-# coding=utf-8
+"""on importe notre module web craller qu'on a créé
+   """
 from web_crawler import WebCrawler
 
 # starting_url = "https://www.villedefermont.qc.ca/"
-starting_url = "https://www.polymtl.ca/"
-crawler = WebCrawler()
-crawler.crawl_site(starting_url)
-crawler.print_report()
-
-
+STARTING_URL = "https://www.polymtl.ca/"
+CRAWLER = WebCrawler()
+CRAWLER.crawl_site(STARTING_URL)
+CRAWLER.print_report()
