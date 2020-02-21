@@ -3,3 +3,4 @@ tldextract==2.2.2
 requests==2.22.0
 urllib3==1.25.8
 virtualenv==16.7.9
+chardet==3.0.4
