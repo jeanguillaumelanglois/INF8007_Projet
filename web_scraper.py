@@ -7,7 +7,6 @@ import requests
 from my_parser import HTMLTagParser
 
 
-
 def get_links_on_page(url, all_links):
     """retourne tous les liens contenus dans la page associée au lien passé en parametres
         On charge le HTML de la page puis on le parse pour recuperer les attributs via les tags
