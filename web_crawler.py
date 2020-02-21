@@ -27,8 +27,11 @@ class WebCrawler():
                  si oui il le place dans les liens invalides
                     sinon il le place dans les liens valides.
                """
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 \
+            (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
         try:
-            code = requests.head(link_to_check).status_code
+            code = requests.head(link_to_check, headers=headers).status_code
             if code in [400, 403, 404, 405]:
                 self.invalid_links.append((link_to_check, code))
             else:
@@ -57,13 +60,14 @@ class WebCrawler():
                 et html parser un module qu'on a cree pour parser le html recu
                """
         starting_domain = self.extract_domain(starting_url)
-        all_links = get_links_on_page(starting_url, self.all_links)
-        for link in all_links:
+        self.all_links = get_links_on_page(starting_url, self.all_links)
+        for link in self.all_links:
             self.check_link_validity(link)
             if self.check_domain(link, starting_domain):
-                all_links = get_links_on_page(link, all_links)
-            all_links.remove(link)
-            self.print_report()
+                self.all_links = get_links_on_page(link, self.all_links)
+            self.all_links.remove(link)
+            print(self.valid_links)
+            print(self.invalid_links)
 
     def print_report(self):
         """imprime lorsque le crawling est fini les liens valides et les liens invalides

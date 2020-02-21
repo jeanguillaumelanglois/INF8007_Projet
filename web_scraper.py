@@ -28,7 +28,6 @@ def get_links_on_page(url, all_links):
             if pattern.match(str(value)):
                 if value not in all_links:
                     all_links.append(value)
-    print(parser.links_text)
     for link in parser.links_text:
         for value in list(link.values()):
             if pattern.match(str(value)):

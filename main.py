@@ -2,7 +2,8 @@
    """
 from web_crawler import WebCrawler
 
-# starting_url = "https://www.villedefermont.qc.ca/"
+
+# STARTING_URL = "https://www.villedefermont.qc.ca/"
 STARTING_URL = "https://www.polymtl.ca/"
 CRAWLER = WebCrawler()
 CRAWLER.crawl_site(STARTING_URL)
