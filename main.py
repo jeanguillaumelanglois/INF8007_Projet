@@ -1,22 +1,20 @@
+# coding=utf-8
 from tldextract import extract
-
-
-
-
 import requests
-import re
+
+from web_scraper import get_links_on_page
 
 
-
-
-
-def check_links(all_links):
-    for link in all_links:
-        code = requests.head(link).status_code
+def check_link_validity(link_to_check):
+    try:
+        code = requests.head(link_to_check).status_code
         if code in [400, 403, 404, 405]:
-            invalid_links.append((link, requests.head(link).status_code))
+            invalid_links.append((link_to_check, code))
         else:
-            valid_links.append((link, requests.head(link).status_code))
+            valid_links.append((link_to_check, code))
+    except:
+        print("Something went wrong with the link")
+        invalid_links.append((link_to_check, "invalid"))
 
 
 def extract_domain(url):
@@ -26,8 +24,8 @@ def extract_domain(url):
 
 
 def check_domain(url, domain):
-    new_domain = extract_domain(url)
-    if domain == new_domain:
+    domain_to_check = extract_domain(url)
+    if domain == domain_to_check:
         return True
     else:
         return False
@@ -39,16 +37,27 @@ starting_domain = extract_domain(starting_url)
 valid_links = []
 invalid_links = []
 
-visited_links = []
-external_links = []
 # scraping main page
+all_links = []
+all_links = get_links_on_page(starting_url, all_links)
+for link in all_links:
+    check_link_validity(link)
+    if check_domain(link, starting_domain):
+        all_links = get_links_on_page(link, all_links)
+    all_links.remove(link)
 
-all_links = get_links_on_page(starting_url, starting_domain)
+# all_links = []
+# link = 'https://www.villedefermont.qc.ca/conseil-municipal/'
+# all_links = get_links_on_page(link, all_links)
 
-print("list of internal links")
+
+print("all_links")
 print(all_links)
-print("external links:")
-print(external_links)
+print("list of valid links")
+print(valid_links)
+print("list of invalid links")
+print(invalid_links)
+
 
 # Schema.org donne un 301
 
