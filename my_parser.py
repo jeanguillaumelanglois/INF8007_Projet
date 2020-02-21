@@ -11,11 +11,13 @@ class HTMLTagParser(HTMLParser):
         self.links_text = []
 
     def handle_starttag(self, tag, attrs):
+        forbidenn_tags = ['data-srcset', 'srcset']
         if tag != 'a':
             attr = dict(attrs)
             self.links_text.append(attr)
         else:
-            attr = dict(attrs)
-            self.links.append(attr)
+            if not tag in forbidenn_tags:
+                attr = dict(attrs)
+                self.links.append(attr)
 
 
