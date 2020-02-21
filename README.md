@@ -5,22 +5,14 @@ Ce programme permet d'extraire tous les liens contenus dans un site web et les c
 ## Prérequis
 
 ```
-Git pull
-Gut stash
+Ouvrir avec PyCharm
+
+pip install requirements.txt
 ```
 
+## Fonctionnement du crawler
 
-## Architecture
-
-Le projet contient 3 modules:
-
-* my_parser
-* web_scraper
-* web_crawler
-
-## Étapes du crawler
-
-Pour crawler un site, on met son url dans la variable starting_url du fichier main.py, puis le script appelera la fonction crawl_site(starting_url) du module web_crawler.
+Pour crawler un site, on met son url dans la variable STARTING_URL du fichier main.py, puis le script appelera la fonction crawl_site(STARTING_URL) du module web_crawler.
 
 Une fois le crawling terminé, le programme appelera la fonction print_report() qui imprimera la liste des liens valides, puis la liste des liens invalides.
 

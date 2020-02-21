@@ -23,7 +23,7 @@ class WebCrawler():
 
     def check_link_validity(self, link_to_check):
         """params: link_to check (un lien)
-                verifie si le lien retourne un code d'erreur
+                vérifie si le lien retourne un code d'erreur
                  si oui il le place dans les liens invalides
                     sinon il le place dans les liens valides.
                """
@@ -41,23 +41,27 @@ class WebCrawler():
 
     def extract_domain(self, url):
         """ params: notre url
-                   permet d'extraire le domaine lie a notre url passee en parametre
+                   permet d'extraire le domaine lié à notre url passee en paramètres
                """
         tsd, td, tsu = extract(url)  # prints abc, hostname, com
         domain = td + '.' + tsu  # will prints as hostname.com
         return domain
 
     def check_domain(self, url, domain):
-        """params = url(notre url), domaine=(notre domaine de reference)
-                   verifie si le domaine de notre url est le meme que le domaine de reference
+        """params = url(notre url), domaine=(notre domaine de référence)
+                   vérifie si le domaine de notre url est le même que le domaine de référence
               """
         domain_to_check = self.extract_domain(url)
         return domain == domain_to_check
 
     def crawl_site(self, starting_url):
-        """re est un module pour les expressions regest,
-                requests pour executer des requetes https sur des url
-                et html parser un module qu'on a cree pour parser le html recu
+        """params = starting_url(url du site à crawler)
+                    Trouve le domaine principal associé à starting_url
+                    Va chercher tous les liens contenus à l'url starting_url et les ajoute dans all_links
+                    Pour chacun des liens dans all_links:
+                        On le lien dans valid_links ou invalid_links
+                        Si le lien est dans le domaine principal trouvé au début, ou ajoute tous les liens de cette parge à all_links
+                        On enlève ce lien de all_links
                """
         starting_domain = self.extract_domain(starting_url)
         self.all_links = get_links_on_page(starting_url, self.all_links)
@@ -66,8 +70,6 @@ class WebCrawler():
             if self.check_domain(link, starting_domain):
                 self.all_links = get_links_on_page(link, self.all_links)
             self.all_links.remove(link)
-            print(self.valid_links)
-            print(self.invalid_links)
 
     def print_report(self):
         """imprime lorsque le crawling est fini les liens valides et les liens invalides

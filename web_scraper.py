@@ -1,4 +1,4 @@
-"""re est un module pour les expressions regest,
+"""re est un module pour les expressions regex,
 requests pour executer des requetes https sur des url
 et html parser un module qu'on a cree pour parser le html recu
    """
