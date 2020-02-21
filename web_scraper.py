@@ -28,5 +28,3 @@ def get_links_on_page(url):
     return all_links
 
 
-
-print(get_links_on_page("http://www.ville.latuque.qc.ca"))
