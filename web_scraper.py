@@ -3,8 +3,8 @@ from my_parser import HTMLTagParser
 import requests
 import re
 
-def get_links_on_page(url):
-    all_links = []
+
+def get_links_on_page(url, all_links):
     headers = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
     page = requests.get(url, headers=headers)
@@ -28,3 +28,5 @@ def get_links_on_page(url):
     return all_links
 
 
+
+print(get_links_on_page("http://www.ville.latuque.qc.ca"))
