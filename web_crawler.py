@@ -78,3 +78,35 @@ class WebCrawler():
         print(self.valid_links)
         print("list of invalid links")
         print(self.invalid_links)
+
+
+
+    #check_validity transformee en fonction pure
+    def check_link_validity(self, link_to_check, valid_links, invalid_links):
+        """params: link_to check (un lien)
+                verifie si le lien retourne un code d'erreur
+                 si oui il le place dans les liens invalides
+                    sinon il le place dans les liens valides.
+               """
+        try:
+            code = requests.head(link_to_check).status_code
+            if code in [400, 403, 404, 405]:
+                invalid_links.append((link_to_check, code))
+            else:
+                valid_links.append((link_to_check, code))
+            return valid_links, invalid_links
+        except:
+            invalid_links.append((link_to_check, "invalid"))
+
+        return valid_links, invalid_links
+
+
+    #extract_domain transformee en fonction pure
+    def extract_domain(self, url):
+        """ params: notre url
+                   permet d'extraire le domaine lie a notre url passee en parametre
+               """
+        tsd, td, tsu = extract(url)  # prints abc, hostname, com
+        url = td + '.' + tsu  # will prints as hostname.com
+        return url
+
