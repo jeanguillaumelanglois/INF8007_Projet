@@ -54,13 +54,13 @@ class WebCrawler():
         domain_to_check = self.extract_domain(url)
         return domain == domain_to_check
 
-    def crawl_site(self, starting_url):
+    def crawl_site(self, starting_url, crawling_activated):
         """params = starting_url(url du site à crawler)
                     Trouve le domaine principal associé à starting_url
                     Va chercher tous les liens contenus à l'url starting_url et les ajoute dans all_links
                     Pour chacun des liens dans all_links:
-                        On le lien dans valid_links ou invalid_links
-                        Si le lien est dans le domaine principal trouvé au début, ou ajoute tous les liens de cette parge à all_links
+                        On met le lien dans valid_links ou invalid_links
+                        Si le lien est dans le domaine principal trouvé au début, ou ajoute tous les liens de cette page à all_links
                         On enlève ce lien de all_links
                """
         starting_domain = self.extract_domain(starting_url)
