@@ -72,6 +72,7 @@ class WebCrawler():
                 self.all_links = get_links_on_page_url(link, self.all_links)
             self.all_links.remove(link)
 
+
     def crawl_local_file(self, local_file_path):
         self.all_links = get_links_local_file(local_file_path, self.all_links)
         # bout de code utilise en fonction pure
@@ -120,6 +121,6 @@ class WebCrawler():
         for link in all_links:
             self.check_link_validity(link)
             if self.check_domain(link, starting_domain):
-                all_links = get_links_on_page(link, all_links)
+                all_links = get_links_on_page_url(link, all_links)
             all_links.remove(link)
         return all_links

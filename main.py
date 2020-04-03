@@ -42,7 +42,11 @@ elif data_type == '3':
     # On prend une liste de sites web en entrée
     elif (stdin_type == '2'):
         print("Please enter the path of your web site list")
+        CRAWLER = WebCrawler()
         website_list = input()
+        for url in website_list:
+            print("Processing for {}".format(url))
+            CRAWLER.crawl_site(url)
     # On prend une liste de fichiers en entrée
     elif (stdin_type == '3'):
         print("Please enter the path of your list of files")
