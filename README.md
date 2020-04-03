@@ -18,7 +18,7 @@ Le script main.py prend 3 éléments en arguments:
     2. Fichier local (2) : le script va trouver tous les liens valides et invalides pour la page HTML contenue dans ce fichier local
     3. Données en stdin (3) : le script va demander le type de données en stdin
         1. Page HTML : le script va demander le path d'une page HTML, puis trouver tous les liens valides et invalides sur cette page
-        2. Liste d'URLs : le script va demander le path d'un fichier .txt contenant une liste d'URLs, puis trouvera tous les liens valides et invalides pour chacun de ces URLs
+        2. Liste de sites web : le script va demander le path d'un fichier .txt contenant une liste d'URLs, puis trouvera tous les liens valides et invalides pour chacun de ces URLs
         3. Liste de fichiers : le script va demander le path d'un fichier .txt contenant une liste de fichiers, puis trouvera tous les liens valides et invalides pour la page HTML contenue dans chacun de ces fichiers
 2. Activation du crawling (1 ou 0) : spécifie au script si on doit crawler les pages HTML, c'est-à-dire plus d'un niveau de profondeur
 3. Données : Si on a choisi 1 (URL) comme type de données, on spécifie ici l'URL, sinon si on a choisi 2 (Fichier local) comme type de données, on spécifie ici le path de ce fichier
