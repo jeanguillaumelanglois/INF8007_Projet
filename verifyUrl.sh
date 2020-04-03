@@ -15,6 +15,6 @@ wait
 echo "Server started"
 
 localHostUrl="http://localhost:"$port
-python3 ../main.py 1 $localHostUrl
+python3 ../main.py 1 1 $localHostUrl
 
 read end
