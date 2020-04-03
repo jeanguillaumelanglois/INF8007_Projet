@@ -65,7 +65,7 @@ class WebCrawler():
                """
         starting_domain = self.extract_domain(starting_url)
         self.all_links = get_links_on_page(starting_url, self.all_links)
-        #bout de code utilise en fonction pure
+        # bout de code utilise en fonction pure
         for link in self.all_links:
             self.check_link_validity(link)
             if self.check_domain(link, starting_domain):
@@ -80,10 +80,8 @@ class WebCrawler():
         print("list of invalid links")
         print(self.invalid_links)
 
-
-
-    #check_validity transformee en fonction pure
-    def check_link_validity(self, link_to_check, valid_links, invalid_links):
+    # check_validity transformee en fonction pure
+    def pure_check_link_validity(self, link_to_check, valid_links, invalid_links):
         """params: link_to check (un lien)
                 verifie si le lien retourne un code d'erreur
                  si oui il le place dans les liens invalides
@@ -101,9 +99,8 @@ class WebCrawler():
 
         return valid_links, invalid_links
 
-
-    #extract_domain transformee en fonction pure
-    def extract_domain(self, url):
+    # extract_domain transformee en fonction pure
+    def pure_extract_domain(self, url):
         """ params: notre url
                    permet d'extraire le domaine lie a notre url passee en parametre
                """
@@ -111,12 +108,11 @@ class WebCrawler():
         url = td + '.' + tsu  # will prints as hostname.com
         return url
 
-    #bout de code transformee en fonction pure
-    def filter_links(self,all_links, starting_domain):
+    # bout de code transformee en fonction pure
+    def pure_filter_links(self, all_links, starting_domain):
         for link in all_links:
             self.check_link_validity(link)
             if self.check_domain(link, starting_domain):
                 all_links = get_links_on_page(link, all_links)
             all_links.remove(link)
         return all_links
-

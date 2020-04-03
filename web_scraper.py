@@ -22,15 +22,16 @@ def get_links_on_page(url, all_links):
     parser = HTMLTagParser()
     parser.feed(data)
 
-    pattern = re.compile("((http|ftp)s?://.*?)")
+    pattern1 = re.compile("((http|ftp)s?://.*?)")
+    pattern2 = re.compile("\/+(.*)")
     for link in parser.links:
         for value in list(link.values()):
-            if pattern.match(str(value)):
+            if pattern1.match(str(value)) or pattern2.match(str(value)):
                 if value not in all_links:
                     all_links.append(value)
     for link in parser.links_text:
         for value in list(link.values()):
-            if pattern.match(str(value)):
+            if pattern1.match(str(value)) or pattern2.match(str(value)):
                 if value not in all_links:
                     all_links.append(value)
 
