@@ -27,7 +27,7 @@ elif data_type == '2':
     crawling_activated = False
     LOCAL_FILE = sys.argv[3]
     CRAWLER = WebCrawler()
-    CRAWLER.crawl_site(LOCAL_FILE, crawling_activated)
+    CRAWLER.crawl_local_file(LOCAL_FILE)
     CRAWLER.print_report()
 
 # On prend en entrée des données en stdin
