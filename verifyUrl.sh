@@ -1,12 +1,12 @@
 gitTarget=$1
 port=$2
 
-#git clone $gitTarget
+git clone $gitTarget
 
 directory=${gitTarget##*/}
 echo $directory
 cd $directory
-#npm install
+npm install
 
 
 echo "Starting server ..."

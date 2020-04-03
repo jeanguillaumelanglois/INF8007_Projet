@@ -3,11 +3,6 @@
 import sys
 from web_crawler import WebCrawler
 
-# Options du script:
-# Arguments
-# 1- Type de données (1- URL, 2- Fichier local, 3- Données en stdin)
-# 2- Activation du crawling (1/0)
-# 3- Données (Pour les types de données 1 et 2)
 DATA_TYPE = sys.argv[1]
 CRAWLING_ACTIVATED = True if sys.argv[2] == '1' else False
 

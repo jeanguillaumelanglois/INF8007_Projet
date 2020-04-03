@@ -31,6 +31,10 @@ Le script verifyURL.sh prend 2 éléments en arguments:
 
 Le script bash partira un serveur en localhost sur le port spécifié sur lequel on ébergera le site web contenu dans le lien git. Ensuite, on va appeler le fichier main.py en spécifiant 1 comme type de données, 1 pour crawling_activated et localhost:{port} comme url
 
+## Linter
+
+Nous avons utilisé Pylint comme linter, il y a un module à télécharger et qui s'intègre facilement à PyCharm
+
 ## Auteurs
 
 * **Marc Hounto - 1769769**
