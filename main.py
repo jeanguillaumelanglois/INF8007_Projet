@@ -39,23 +39,34 @@ elif data_type == '3':
     if (stdin_type == '1'):
         print("Please enter the path of your HTML page")
         HTML_page = input()
+        print("Starting crawler on HTML page")
+        print("(Crawling deactivated)")
+        crawling_activated = False
+        CRAWLER = WebCrawler()
+        CRAWLER.crawl_local_file(HTML_page)
+        CRAWLER.print_report()
     # On prend une liste de sites web en entrée
     elif (stdin_type == '2'):
         print("Please enter the path of your web site list")
-        CRAWLER = WebCrawler()
         website_list = input()
+        CRAWLER = WebCrawler()
+        print("Starting crawler on web site list")
+        if not crawling_activated:
+            print("(Crawling deactivated)")
         for url in website_list:
             print("Processing for {}".format(url))
-            CRAWLER.crawl_site(url)
+            CRAWLER.crawl_site(url, crawling_activated)
+            CRAWLER.print_report()
     # On prend une liste de fichiers en entrée
     elif (stdin_type == '3'):
         print("Please enter the path of your list of files")
         files_list = input()
-    # print("Starting crawler on stdin data")
-    # if not crawling_activated:
-    #     print("(Crawling deactivated)")
-    # CRAWLER = WebCrawler()
-    # CRAWLER.crawl_site(data, crawling_activated)
-    # CRAWLER.print_report()
+        print("Starting crawler on list of files")
+        print("(Crawling deactivated)")
+        CRAWLER = WebCrawler()
+        for file in files_list:
+            print("Processing for {}".format(file))
+            CRAWLER.crawl_local_file(file, crawling_activated)
+            CRAWLER.print_report()
 
 
