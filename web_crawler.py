@@ -63,6 +63,8 @@ class WebCrawler():
                         Si le lien est dans le domaine principal trouvé au début, ou ajoute tous les liens de cette page à all_links
                         On enlève ce lien de all_links
                """
+        self.valid_links = []
+        self.invalid_links = []
         starting_domain = self.extract_domain(starting_url)
         self.all_links = get_links_on_page_url(starting_url, self.all_links)
         # bout de code utilise en fonction pure
@@ -74,6 +76,8 @@ class WebCrawler():
 
 
     def crawl_local_file(self, local_file_path):
+        self.valid_links = []
+        self.invalid_links = []
         self.all_links = get_links_local_file(local_file_path, self.all_links)
         # bout de code utilise en fonction pure
         for link in self.all_links:
