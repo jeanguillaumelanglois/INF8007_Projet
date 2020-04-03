@@ -65,6 +65,7 @@ class WebCrawler():
                """
         starting_domain = self.extract_domain(starting_url)
         self.all_links = get_links_on_page(starting_url, self.all_links)
+        #bout de code utilise en fonction pure
         for link in self.all_links:
             self.check_link_validity(link)
             if self.check_domain(link, starting_domain):
@@ -109,4 +110,13 @@ class WebCrawler():
         tsd, td, tsu = extract(url)  # prints abc, hostname, com
         url = td + '.' + tsu  # will prints as hostname.com
         return url
+
+    #bout de code transformee en fonction pure
+    def filter_links(self,all_links, starting_domain):
+        for link in all_links:
+            self.check_link_validity(link)
+            if self.check_domain(link, starting_domain):
+                all_links = get_links_on_page(link, all_links)
+            all_links.remove(link)
+        return all_links
 
