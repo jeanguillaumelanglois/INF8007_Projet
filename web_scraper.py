@@ -24,7 +24,8 @@ def get_links_on_page_url(url, all_links):
 
     pattern1 = re.compile("((http|ftp)s?://.*?)")
     pattern2 = re.compile("\/+(.*)")
-    links_from_text = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', data)
+    links_from_text = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|\
+                                                (?:%[0-9a-fA-F][0-9a-fA-F]))\+', data)
     for link in parser.links:
         for value in list(link.values()):
             if pattern1.match(str(value)) or pattern2.match(str(value)):

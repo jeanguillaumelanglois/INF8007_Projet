@@ -57,10 +57,12 @@ class WebCrawler():
     def crawl_site(self, starting_url, crawling_activated):
         """params = starting_url(url du site à crawler)
                     Trouve le domaine principal associé à starting_url
-                    Va chercher tous les liens contenus à l'url starting_url et les ajoute dans all_links
+                    Va chercher tous les liens contenus à l'url
+                    starting_url et les ajoute dans all_links
                     Pour chacun des liens dans all_links:
                         On met le lien dans valid_links ou invalid_links
-                        Si le lien est dans le domaine principal trouvé au début, ou ajoute tous les liens de cette page à all_links
+                        Si le lien est dans le domaine principal trouvé au
+                         début, ou ajoute tous les liens de cette page à all_links
                         On enlève ce lien de all_links
                """
         self.valid_links = []
@@ -76,6 +78,9 @@ class WebCrawler():
 
 
     def crawl_local_file(self, local_file_path):
+        """Il s'agit du meme processus de crawling sauf qu'ici on
+            traite des fichiers html
+                       """
         self.valid_links = []
         self.invalid_links = []
         self.all_links = get_links_local_file(local_file_path, self.all_links)
@@ -93,7 +98,7 @@ class WebCrawler():
         print(self.invalid_links)
 
     # check_validity transformee en fonction pure
-    def pure_check_link_validity(self, link_to_check, valid_links, invalid_links):
+    def pure_check_link_validity(link_to_check, valid_links, invalid_links):
         """params: link_to check (un lien)
                 verifie si le lien retourne un code d'erreur
                  si oui il le place dans les liens invalides
@@ -122,6 +127,9 @@ class WebCrawler():
 
     # bout de code transformee en fonction pure
     def pure_filter_links(self, all_links, starting_domain):
+        """Ce bout de code transforme en fonction pure est a la base pour
+        retirer les liens deja visites par le crawler
+                       """
         for link in all_links:
             self.check_link_validity(link)
             if self.check_domain(link, starting_domain):
